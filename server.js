@@ -2,13 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const bcrypt = require('bcrypt')
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 const knex = require('knex')({
     client: 'pg',
     connection:{
-        host: '127.0.0.1',
-        user: 'postgres',
-        password: 'postgres',
-        database: 'smartbrain'
+        host: process.env.DATABASE_URL,
+        ssl : true
     }
 });
 
